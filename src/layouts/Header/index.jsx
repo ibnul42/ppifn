@@ -1,77 +1,64 @@
 import React from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Header() {
+  const { selectedType } = useSelector((state) => state.auth);
   return (
     <div>
-      <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            Navbar
-          </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown link
-                </a>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+              {selectedType === "participant" ? (
+                <>
+                  <Link to="/payment" className="nav-link">
+                    Payment
+                  </Link>
+                  <Link to="/verification" className="nav-link">
+                    Verification
+                  </Link>
+                  <Link to="/pool_articipant" className="nav-link">
+                    Pools and Participants
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/api" className="nav-link">
+                    API
+                  </Link>
+                  <Link to="/contact" className="nav-link">
+                    Contact
+                  </Link>
+                  <Link to="/Dashboard" className="nav-link">
+                    Dashboard
+                  </Link>
+                </>
+              )}
+
+              {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Something
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown> */}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 }
