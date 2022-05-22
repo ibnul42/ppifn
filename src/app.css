@@ -1,0 +1,31 @@
+.modal_main {
+  overflow-y: hidden !important;
+}
+
+.modal-dialog {
+  width: 75% !important;
+  height: 75% !important;
+}
+
+.modal-content {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.p_50 {
+  padding: 50px !important;
+}
+
+.content_oveflow {
+  overflow-y: scroll;
+  padding: 15px;
+}
+
+@media screen and (min-width: 576px) {
+  .modal-dialog {
+    max-width: 100% !important;
+    margin: 1.75rem auto;
+  }
+}

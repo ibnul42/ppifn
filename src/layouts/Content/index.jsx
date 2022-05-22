@@ -8,6 +8,7 @@ import Api from "../../pages/Api";
 import Contact from "../../pages/Contact";
 import Dashboard from "../../pages/Dashboard";
 import Invalid from "../../pages/Invalid";
+import About from "../../pages/About";
 
 function Content() {
   return (
@@ -20,6 +21,7 @@ function Content() {
         <Route path="/Api" element={<Api />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<Invalid />} />
       </Routes>
     </div>

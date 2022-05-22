@@ -16,7 +16,10 @@ function Header() {
               <Link to="/" className="nav-link">
                 Home
               </Link>
-              {selectedType === "participant" ? (
+              <Link to="/about" className="nav-link">
+                About
+              </Link>
+              {selectedType === "accept" ? (
                 <>
                   <Link to="/payment" className="nav-link">
                     Payment
@@ -27,9 +30,6 @@ function Header() {
                   <Link to="/pool_articipant" className="nav-link">
                     Pools and Participants
                   </Link>
-                </>
-              ) : (
-                <>
                   <Link to="/api" className="nav-link">
                     API
                   </Link>
@@ -40,7 +40,7 @@ function Header() {
                     Dashboard
                   </Link>
                 </>
-              )}
+              ) : null}
 
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
