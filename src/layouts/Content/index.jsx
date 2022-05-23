@@ -9,6 +9,7 @@ import Contact from "../../pages/Contact";
 import Dashboard from "../../pages/Dashboard";
 import Invalid from "../../pages/Invalid";
 import About from "../../pages/About";
+import Login from "../../pages/Login";
 
 function Content() {
   return (
@@ -22,6 +23,7 @@ function Content() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
         <Route path="*" element={<Invalid />} />
       </Routes>
     </div>
