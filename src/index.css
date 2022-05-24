@@ -39,6 +39,15 @@ code {
   margin-bottom: 50px;
 }
 
+.footer_decline {
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.accept_ul {
+  padding-left: 0px !important;
+}
+
 @keyframes animatename {
   from {
     width: 0;
