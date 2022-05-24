@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
-import { FcGoogle } from "react-icons/fc";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { loginUser } from "../../Feature/Auth/authSlice";
 
 function Login() {
-  const [loginType, setLoginType] = useState(null);
-  const [TypeErrorTxt, setTypeErrorTxt] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    type: null,
+  });
+  const { email, password, type } = formData;
+
   const submitHandler = (e) => {
-    setTypeErrorTxt(true);
     e.preventDefault();
-    console.log("Submit");
+    dispatch(loginUser(formData));
+    navigate("/");
   };
 
-  const typeChanged = (input) => {};
+  const onChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
   return (
     <div className="row">
       <div className="col-sm-12 col-md-6">
         <p className="h2">Account Login</p>
         <div className="col-12 col-md-9">
           <form
-            onClick={submitHandler}
+            onSubmit={submitHandler}
             className=" d-flex flex-column my-4 gap-3"
           >
             <div className="">
@@ -27,31 +43,53 @@ function Login() {
               </label>
               <Dropdown>
                 <Dropdown.Toggle variant="warning" id="dropdown-type">
-                  {loginType ? loginType : "None"}
+                  {type ? type : "None"}
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={() => setLoginType("Pool")}>
+                  <Dropdown.Item
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        type: "pool",
+                      })
+                    }
+                  >
                     Pool
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={() => setLoginType("Participant")}>
+                  <Dropdown.Item
+                    onClick={() =>
+                      setFormData({
+                        ...formData,
+                        type: "participant",
+                      })
+                    }
+                  >
                     Participants
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              {TypeErrorTxt ? "Type required" : null}
             </div>
             <div className="w-100">
               <p>Email</p>
               <input
                 type="text"
+                name="email"
+                value={email}
+                onChange={onChange}
                 placeholder="email or username"
                 className="py-1 px-2 border w-100 w-100"
               />
             </div>
             <div className="w-100">
               <p>Password</p>
-              <input type="password" className="py-1 px-2 border w-100" />
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={onChange}
+                className="py-1 px-2 border w-100"
+              />
             </div>
 
             <input

@@ -154,17 +154,14 @@ function Home() {
                   }`}
                 ></div>
               </div>
-
-              {/* <button type="button" className="btn btn-dark">
-                Learn more about eFront
-              </button> */}
             </div>
           </div>
-          <div className="ar-offset-1 col-xl-5 col-lg-6 col-md-5 col-sm-12">
+          <div className="col-md-6 col-sm-12">
             <div className="img-block">
               <img
                 src="https://www.blackrock.com/blk-inst-assets/cache-1640697450000/images/media-bin/web/institutional/casestudy.webp"
                 alt=""
+                className="h-100 w-100"
               />
             </div>
           </div>

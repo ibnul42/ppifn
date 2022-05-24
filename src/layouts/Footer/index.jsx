@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Footer() {
-  const [selected, setSelected] = useState("accept");
   const [formData, setFormData] = useState({
     fName: "",
     lName: "",
@@ -11,6 +11,8 @@ function Footer() {
     companyName: "",
     phoneNumber: "",
   });
+
+  const { selectedType } = useSelector((state) => state.auth);
 
   const { fName, lName, email, companyName, phoneNumber } = formData;
 
@@ -26,7 +28,7 @@ function Footer() {
     console.log(formData);
   };
 
-  if (selected === "decline") {
+  if (selectedType === "decline") {
     return (
       <div>
         <ul className="py-3 d-flex list-unstyled border border-dark footer_decline d-flex flex-wrap">
@@ -83,7 +85,7 @@ function Footer() {
       </div>
     );
   }
-  if (selected === "accept") {
+  if (selectedType === "accept") {
     return (
       <div>
         <ul className="py-3 d-flex list-unstyled border border-dark footer_decline d-flex flex-wrap">
@@ -184,7 +186,7 @@ function Footer() {
       </div>
     );
   }
-  if (selected === "participant") {
+  if (selectedType === "participant") {
     return (
       <div className="bg-dark d-flex flex-column justify-content-center align-items-center text-white py-3">
         <h5>Explore other Aladin product</h5>
@@ -225,7 +227,7 @@ function Footer() {
       </div>
     );
   }
-  if (selected === "pool") {
+  if (selectedType === "pool") {
     return (
       <div className="py-3 bg-warning">
         <h5 className="text-uppercase px-3">Aladin Additional Studio</h5>

@@ -11,7 +11,10 @@ function Header() {
         <Container>
           <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            className="d-flex flex-column flex-lg-row justify-content-between"
+          >
             <Nav className="me-auto">
               <Link to="/" className="nav-link">
                 Home
@@ -19,6 +22,8 @@ function Header() {
               <Link to="/about" className="nav-link">
                 About
               </Link>
+
+              {/* accept */}
               {selectedType === "accept" ? (
                 <>
                   <Link to="/payment" className="nav-link">
@@ -42,6 +47,42 @@ function Header() {
                 </>
               ) : null}
 
+              {/* pool */}
+              {selectedType === "pool" ? (
+                <>
+                  <Link to="/api" className="nav-link">
+                    API
+                  </Link>
+                  <Link to="/contact" className="nav-link">
+                    Contact
+                  </Link>
+                  <Link to="/Dashboard" className="nav-link">
+                    Dashboard
+                  </Link>
+                  <Link to="/payment" className="nav-link">
+                    Payment
+                  </Link>
+                </>
+              ) : null}
+
+              {/* participant */}
+              {selectedType === "participant" ? (
+                <>
+                  <Link to="/payment" className="nav-link">
+                    Payment
+                  </Link>
+                  <Link to="/verification" className="nav-link">
+                    Verification
+                  </Link>
+                  <Link to="/pool_articipant" className="nav-link">
+                    Pools and Participants
+                  </Link>
+                  <Link to="/pleging" className="nav-link">
+                    Pleging
+                  </Link>
+                </>
+              ) : null}
+
               {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -56,6 +97,11 @@ function Header() {
                 </NavDropdown.Item>
               </NavDropdown> */}
             </Nav>
+            {selectedType === "accept" ? (
+              <Link to="/login" type="button" className="btn btn-success">
+                Login
+              </Link>
+            ) : null}
           </Navbar.Collapse>
         </Container>
       </Navbar>
